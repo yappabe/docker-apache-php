@@ -3,6 +3,7 @@ FROM debian:jessie
 MAINTAINER Joeri Verdeyen <joeriv@yappa.be>
 
 ENV DOCUMENT_ROOT /var/www/app/html
+ENV ENVIRONMENT dev
 
 RUN \
   apt-get update && \
