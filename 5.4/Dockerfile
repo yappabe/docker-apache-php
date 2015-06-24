@@ -53,7 +53,7 @@ RUN echo Europe/Brussels > /etc/timezone && dpkg-reconfigure --frontend noninter
 
 RUN ln -sf /dev/stderr /var/log/apache2/error.log
 
-COPY default.conf /etc/apache2/sites-available/000-default.conf
+COPY default.conf /etc/apache2/sites-available/default
 COPY php.ini    /etc/php5/apache2/conf.d/
 COPY php.ini    /etc/php5/cli/conf.d/
 COPY run.sh run.sh
