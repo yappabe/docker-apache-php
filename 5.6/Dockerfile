@@ -8,6 +8,10 @@ ENV ENVIRONMENT dev
 RUN \
   apt-get update && \
   apt-get install -y \
+    curl \
+    wget \
+    git \
+    iptables \
     apache2 \
     php5 \
     php5-mysql \
