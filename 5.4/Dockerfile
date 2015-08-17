@@ -57,6 +57,8 @@ RUN echo Europe/Brussels > /etc/timezone && dpkg-reconfigure --frontend noninter
 
 RUN ln -sf /dev/stderr /var/log/apache2/error.log
 
+COPY dummy.crt  /etc/ssl/crt/dummy.crt
+COPY dummy.key  /etc/ssl/crt/dummy.key
 COPY default.conf /etc/apache2/sites-available/default
 COPY php.ini    /etc/php5/apache2/conf.d/
 COPY php.ini    /etc/php5/cli/conf.d/
@@ -65,5 +67,6 @@ COPY run.sh run.sh
 RUN chmod +x run.sh
 
 EXPOSE 80
+EXPOSE 443
 
 CMD ["./run.sh"]
