@@ -7,15 +7,13 @@ Add the following to your docker-compose.yml file:
 ```
 apache:
     image: yappabe/apache-php
-    ports:
-        - 80:80
     links:
         - mysql
     volumes_from:
         - app
     environment:
         DOCUMENT_ROOT: /var/www/app/web
-        ENVIRONEMENT: dev
+        ENVIRONMENT: dev
 ```
 
 ## ENV vars
@@ -24,9 +22,8 @@ apache:
 * ENVIRONEMENT defaults to dev
 
 
-## Older PHP version
+## How to use PHP 5.4
 
-```
 ```
 apache:
     image: yappabe/apache-php:5.4
