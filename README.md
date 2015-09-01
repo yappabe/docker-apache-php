@@ -19,7 +19,7 @@ apache:
 ## ENV vars
 
 * DOCUMENT_ROOT defaults to /var/www/app/web
-* ENVIRONEMENT defaults to dev
+* ENVIRONMENT defaults to dev
 
 
 ## How to use PHP 5.4
