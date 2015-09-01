@@ -10,6 +10,7 @@ RUN \
   apt-get install -y \
     curl \
     wget \
+    vim \
     git \
     iptables \
     apache2 \
