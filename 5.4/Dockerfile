@@ -12,6 +12,7 @@ RUN \
     wget \
     vim \
     git \
+    locales \
     iptables \
     apache2 \
     php5 \

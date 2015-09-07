@@ -14,6 +14,7 @@ RUN \
     git \
     iptables \
     apache2 \
+    locales \
     php5 \
     php5-mysql \
     php5-mysql \
