@@ -46,12 +46,12 @@ RUN \
   a2enmod deflate && \
   a2enmod setenvif && \
   a2enmod vhost_alias && \
-  a2enmod ssl && \
+  # a2enmod ssl && \
   apt-get autoremove -y && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists
 
-  RUN echo "suhosin.executor.include.whitelist = phar" > /etc/php5/cli/conf.d/composer.ini
+RUN echo "suhosin.executor.include.whitelist = phar" > /etc/php5/cli/conf.d/composer.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
