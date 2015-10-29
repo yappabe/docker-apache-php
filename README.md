@@ -1,3 +1,4 @@
+![Docker pulls](https://img.shields.io/docker/pulls/yappabe/apache-php.svg?style=flat)
 # Yappa Apache PHP Docker Image
 
 ## Usage
