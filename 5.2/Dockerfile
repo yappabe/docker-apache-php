@@ -7,6 +7,17 @@ ENV ENVIRONMENT dev
 
 RUN echo "deb http://archive.debian.org/debian lenny main contrib non-free" >> /etc/apt/sources.list.d/lenny.list
 
+RUN echo 'Explanation: choose Lenny as installation source if the package is not already installed and not available from Squeeze\n\
+Package: *\n\
+Pin: release n=lenny*\n\
+Pin-Priority: 100\n\
+
+Explanation: choose Lenny as installation source for those packages\n\
+Package: php5 php5-common php5-mysql php5-mcrypt php5-gd php5-memcached php5-curl php-pear php-apc php5-cli php5-curl php5-mcrypt php5-sqlite php5-intl php5-tidy php5-imap php5-json php5-imagick libapache2-mod-php5\n\
+Pin: release n=lenny*\n\
+Pin-Priority: 999\n'\
+>> /etc/apt/preferences.d/lenny
+
 RUN \
   apt-get update && \
   apt-get install -y \
@@ -21,7 +32,6 @@ RUN \
     php5-mysql \
     php5-mcrypt \
     php5-gd \
-    php5-memcached \
     php5-curl \
     php-pear \
     php-apc \
@@ -29,7 +39,6 @@ RUN \
     php5-curl \
     php5-mcrypt \
     php5-sqlite \
-    php5-intl \
     php5-tidy \
     php5-imap \
     php5-json \
@@ -51,10 +60,6 @@ RUN \
   apt-get autoremove -y && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists
-
-RUN echo "suhosin.executor.include.whitelist = phar" > /etc/php5/cli/conf.d/composer.ini
-
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN echo Europe/Brussels > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
 
