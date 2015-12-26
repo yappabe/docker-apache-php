@@ -23,9 +23,20 @@ apache:
 * ENVIRONMENT defaults to dev
 
 
-## How to use PHP 5.4
+## How to use a different PHP version
+
+Append one of the available version numbers to the image name.
+
+### Example:
 
 ```
 apache:
     image: yappabe/apache-php:5.4
 ```
+
+### Available versions
+
+- 5.6
+- 5.4
+- 5.3
+- 5.2
