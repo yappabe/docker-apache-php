@@ -21,6 +21,7 @@ RUN \
     php5-mcrypt \
     php5-gd \
     php5-memcached \
+    php5-memcache \
     php5-curl \
     php-pear \
     php-apc \
@@ -31,7 +32,6 @@ RUN \
     php5-intl \
     php5-tidy \
     php5-imap \
-    php5-imagick \
     php5-json \
     php5-imagick \
     libapache2-mod-php5 && \
