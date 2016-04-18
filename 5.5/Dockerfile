@@ -58,6 +58,7 @@ RUN \
   a2enmod setenvif && \
   a2enmod vhost_alias && \
   a2enmod ssl && \
+  a2enmod php5 && \
   apt-get autoremove -y && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists
