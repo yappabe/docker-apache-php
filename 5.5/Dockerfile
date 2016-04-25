@@ -94,11 +94,11 @@ COPY dummy.key  /etc/ssl/crt/dummy.key
 COPY default.conf /etc/apache2/sites-available/default
 COPY php.ini    /etc/php5/apache2/conf.d/
 COPY php.ini    /etc/php5/cli/conf.d/
-COPY run.sh run.sh
+COPY run.sh /run.sh
 
-RUN chmod +x run.sh
+RUN chmod +x /run.sh
 
 EXPOSE 80
 EXPOSE 443
 
-CMD ["./run.sh"]
+CMD ["/run.sh"]
