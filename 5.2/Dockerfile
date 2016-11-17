@@ -1,22 +1,9 @@
-FROM debian:squeeze
+FROM pblaszczyk/debian-lenny
 
 MAINTAINER Joeri Verdeyen <joeriv@yappa.be>
 
 ENV DOCUMENT_ROOT /var/www/app/html
 ENV ENVIRONMENT dev
-
-RUN echo "deb http://archive.debian.org/debian lenny main contrib non-free" >> /etc/apt/sources.list.d/lenny.list
-
-RUN echo 'Explanation: choose Lenny as installation source if the package is not already installed and not available from Squeeze\n\
-Package: *\n\
-Pin: release n=lenny*\n\
-Pin-Priority: 100\n\
-
-Explanation: choose Lenny as installation source for those packages\n\
-Package: php5 php5-common php5-mysql php5-mcrypt php5-gd php5-memcached php5-curl php-pear php-apc php5-cli php5-curl php5-mcrypt php5-sqlite php5-intl php5-tidy php5-imap php5-json php5-imagick libapache2-mod-php5\n\
-Pin: release n=lenny*\n\
-Pin-Priority: 999\n'\
->> /etc/apt/preferences.d/lenny
 
 RUN \
   apt-get update && \
@@ -26,7 +13,6 @@ RUN \
     vim \
     git \
     locales \
-    iptables \
     apache2 \
     php5 \
     php5-mysql \
@@ -50,7 +36,6 @@ RUN \
   a2enmod dir && \
   a2enmod env && \
   a2enmod mime && \
-  a2enmod reqtimeout && \
   a2enmod rewrite && \
   a2enmod status && \
   a2enmod filter && \
@@ -90,11 +75,10 @@ COPY dummy.key  /etc/ssl/crt/dummy.key
 COPY default.conf /etc/apache2/sites-available/default
 COPY php.ini    /etc/php5/apache2/conf.d/
 COPY php.ini    /etc/php5/cli/conf.d/
-COPY run.sh run.sh
+COPY run.sh /run.sh
 
 RUN chmod +x run.sh
 
-EXPOSE 80
-EXPOSE 443
+EXPOSE 80 433
 
-CMD ["./run.sh"]
+ENTRYPOINT ["/bin/bash", "/run.sh"]
