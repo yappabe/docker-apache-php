@@ -1,9 +1,9 @@
-FROM debian:squeeze
-
+FROM ubuntu:12.04
 MAINTAINER Joeri Verdeyen <joeriv@yappa.be>
 
 ENV DOCUMENT_ROOT /var/www/app/html
 ENV ENVIRONMENT dev
+ENV PHP_ERROR_REPORTING E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED
 
 RUN \
   apt-get update && \
@@ -13,7 +13,6 @@ RUN \
     vim \
     git \
     locales \
-    iptables \
     apache2 \
     php5 \
     php5-mysql \
@@ -46,7 +45,6 @@ RUN \
   a2enmod deflate && \
   a2enmod setenvif && \
   a2enmod vhost_alias && \
-  # a2enmod ssl && \
   apt-get autoremove -y && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists
@@ -88,7 +86,6 @@ COPY run.sh run.sh
 
 RUN chmod +x run.sh
 
-EXPOSE 80
-EXPOSE 443
+EXPOSE 80 443
 
-CMD ["./run.sh"]
+ENTRYPOINT ["/bin/bash", "/run.sh"]

@@ -1,0 +1,6 @@
+php:
+    build: .
+    working_dir: /var/www/app
+    environment:
+        ENVIRONMENT: dev
+        PHP_ERROR_REPORTING: E_ALL & ~E_NOTICE
