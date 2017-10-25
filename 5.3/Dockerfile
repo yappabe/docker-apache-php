@@ -4,6 +4,7 @@ MAINTAINER Joeri Verdeyen <joeriv@yappa.be>
 ENV DOCUMENT_ROOT /var/www/app/html
 ENV ENVIRONMENT dev
 ENV PHP_ERROR_REPORTING E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED
+ENV COMPOSER_ALLOW_SUPERUSER 1
 
 RUN \
   apt-get update && \

@@ -4,6 +4,7 @@ MAINTAINER Joeri Verdeyen <joeriv@yappa.be>
 
 ENV DOCUMENT_ROOT /var/www/app/html
 ENV ENVIRONMENT dev
+ENV COMPOSER_ALLOW_SUPERUSER 1
 
 RUN \
   apt-get update && \
